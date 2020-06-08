@@ -1,6 +1,6 @@
 package msa.support.clients;
 
-import msa.support.model.User;
+import msa.support.domain.User;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;

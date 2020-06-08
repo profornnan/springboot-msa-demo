@@ -1,19 +1,19 @@
 package msa.user.controller;
 
+import lombok.AllArgsConstructor;
 import msa.user.model.User;
 import msa.user.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @CrossOrigin
 @RequestMapping("/api/user")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     @GetMapping(value = "/")
     public List<User> getAllUser() {
