@@ -261,3 +261,43 @@ http://localhost:8003/api/artist/3
 }
 ```
 
+
+
+## Docker 이미지 생성
+
+```gradle
+		:
+bootJar {
+    archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
+}
+```
+
+
+
+Dockerfile
+
+```dockerfile
+FROM openjdk:8-jdk-alpine
+ARG JAR_FILE=build/libs/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
+```
+
+
+
+![image-20200609104151626](images/image-20200609104151626.png)
+
+
+
+```bash
+C:\Users\TTak\Desktop\local repository\springboot-msa-demo\support>docker build -t profornnan/msa-support .
+```
+
+
+
+```bash
+C:\Users\TTak\Desktop\local repository\springboot-msa-demo\support>docker push profornnan/msa-support
+```
+
+
+

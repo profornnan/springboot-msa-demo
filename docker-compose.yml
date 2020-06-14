@@ -1,0 +1,42 @@
+version: "3"
+services:
+    user_db:
+        image: mongo
+        container_name: "user_db"
+        environment:
+            MONGO_INITDB_DATABASE: "user"
+        ports:
+            - 8101:27017
+        volumes:
+            - "user_db:/data/db"
+    support_db:
+        image: mongo
+        container_name: "support_db"
+        environment:
+            MONGO_INITDB_DATABASE: "support"
+        ports:
+            - 8105:27017
+        # volumes:
+        #     - "support_db:/data/db"
+    artist_db:
+        image: mongo
+        container_name: "artist_db"
+        environment:
+            MONGO_INITDB_DATABASE: "artist"
+        ports:
+            - 8102:27017
+        # volumes:
+        #     - "artist_db:/data/db"
+    user_api:
+        image: profornnan/msa-user
+        container_name: "user_api"
+        ports:
+            - 8002:8080
+        links:
+            - user_db
+        depends_on:
+            - user_db
+volumes:
+    user_db:
+    support_db:
+    artist_db:
